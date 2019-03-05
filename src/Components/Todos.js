@@ -1,8 +1,30 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import TodoInput from "./TodoInput";
 import TodoOutput from "./TodoOutput";
 
-const Todos = ({ handleChange, addTodo, todoInput, todos, removeTodo }) => {
+const Todos = () => {
+
+    let initialState = ["Try out hooks", "Do another thing", "This is a test"];
+
+    const [todos, setTodos] = useState(initialState);
+    const [todoInput, setInput] = useState("");
+  
+    const handleChange = e => {
+      setInput(e.target.value);
+    };
+  
+    const addTodo = e => {
+      e.preventDefault();
+      setTodos(todos.concat(todoInput));
+      setInput("");
+    };
+  
+    const removeTodo = index => {
+      const newTodos = [...todos];
+      newTodos.splice(index, 1);
+      setTodos(newTodos);
+    };
+
   return (
     <Fragment>
       <TodoInput

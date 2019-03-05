@@ -16,11 +16,10 @@ export const Timer = ({ timer }) => {
   };
 
   const startCountDown = () => {
-      for (let i=0; i<100; i++) {
-    setInterval(countDown(thisTimer), 1000);
-      }
+    for (let i = 0; i < 100; i++) {
+      setInterval(countDown(thisTimer), 1000);
+    }
   };
-
 
   return (
     <div className="container col">
