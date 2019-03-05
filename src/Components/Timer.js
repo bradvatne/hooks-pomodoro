@@ -24,7 +24,7 @@ export const Timer = ({ timer }) => {
 
   return (
     <div className="container col">
-      <h1 className="display-3">{thisTimer}</h1>
+      <h1 className="display-4">{thisTimer}</h1>
       <div className="row">
         <button
           type="button"

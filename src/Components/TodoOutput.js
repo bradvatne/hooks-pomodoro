@@ -6,11 +6,8 @@ const TodoOutput = ({ todos, removeTodo }) => {
       {todos.map((todo, index) => (
         <li className="list-group-item" key={index} index={index}>
           {todo}
-          <button
-            className="btn btn-outline-danger float-right"
-            onClick={() => removeTodo(index)}
-          >
-            <i className="fas fa-ban" />
+          <button className="btn btn-outline-danger float-right" onClick={()=> removeTodo(index)}>
+            <i className="fas fa-ban"></i>
           </button>
           <button className="btn btn-outline-success float-right mr-2">
             <i className="fas fa-check" />
