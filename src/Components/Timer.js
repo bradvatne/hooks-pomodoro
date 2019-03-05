@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useInterval } from "../util.js";
 
 const Timer = ({ timer }) => {
   const [time, setTime] = useState(timer);
-  const [isRunning, setRunning] = useState(false)
+  const [isRunning, setRunning] = useState(false);
 
   const countDown = () => {
     let newTime = time.split(":");
@@ -16,7 +16,6 @@ const Timer = ({ timer }) => {
   };
 
   useInterval(countDown, isRunning ? 1000 : null);
-  
 
   return (
     <div className="container col">
