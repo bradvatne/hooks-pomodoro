@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/hooks-pomodoro/precache-manifest.83d52a2166a494e2bac67b137be134b4.js"
+  "/hooks-pomodoro/precache-manifest.66e3a16eba559093fb153f4385535f81.js"
 );
 
 workbox.clientsClaim();
