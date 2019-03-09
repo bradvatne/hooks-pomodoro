@@ -4,58 +4,67 @@ import TodoOutput from "../Components/TodoOutput";
 import Timers from "./Timers";
 
 const Todos = () => {
+  //placeholder state, replace with database
+  let initialTodos = ["Try out hooks", "Do another thing", "This is a test"];
+  let initialCompleted = [];
 
-    //placeholder state, replace with database
-    let initialTodos = ["Try out hooks", "Do another thing", "This is a test"];
-    let initialCompleted = []
+  //establishing initial state hooks
+  const [todoState, setTodoState] = useState({
+    todos: initialTodos,
+    completed: initialCompleted,
+    todoInput: ""
+  });
 
+  //destructure todo state
+  const { todos, completed, todoInput } = todoState;
 
-    //establishing initial state hooks
-    const [todoState, setTodoState] = useState({
-      todos: initialTodos,
-      completed: initialCompleted,
+  //handle textfield input update state
+  const handleChange = e => {
+    setTodoState({ ...todoState, todoInput: e.target.value });
+  };
+
+  //adds todo to todoState.todos, sets input (todoState.input) to blank
+  const addTodo = e => {
+    e.preventDefault();
+    setTodoState({
+      ...todoState,
+      todos: todos.concat(todoInput),
       todoInput: ""
     });
+  };
 
-    //destructure state
-    const {todos, completed, todoInput} = todoState
+  //removes indexed todo from todoState.todos
+  const removeTodo = index => {
+    const newTodos = [...todos];
+    newTodos.splice(index, 1);
+    setTodoState({ ...todoState, todos: newTodos });
+  };
 
-    //handle textfield input update state
-    const handleChange = e => {
-      setTodoState({...todoState, todoInput: e.target.value})
-    };
-    
-    //adds todo to list, resets text field
-    const addTodo = e => {
-      e.preventDefault();
-      setTodoState({...todoState, todos: todos.concat(todoInput), todoInput: ""});
-    };
-    
-    //removes todo from list
-    const removeTodo = index => {
-      const newTodos = [...todos];
-      newTodos.splice(index, 1);
-      setTodoState({...todoState, todos: newTodos});
-    };
-
-    //complete todo not working
-    const completeTodo = index => {
-      const newTodos = [...todos];
-      const newCompleted = todos[index]
-      newTodos.splice(index, 1);
-      setTodoState({...todoState, todos: newTodos, completed: newCompleted.concat(completed)});
-      }
-    
+  //adds todo to todoState.completed
+  const completeTodo = index => {
+    const newTodos = [...todos];
+    const newCompleted = todos[index];
+    newTodos.splice(index, 1);
+    setTodoState({
+      ...todoState,
+      todos: newTodos,
+      completed: newCompleted.concat(completed)
+    });
+  };
 
   return (
     <Fragment>
-    <Timers/>
+      <Timers />
       <TodoInput
         handleChange={handleChange}
         addTodo={addTodo}
         todoInput={todoInput}
       />
-      <TodoOutput todos={todos} removeTodo={removeTodo} completeTodo={completeTodo}/>
+      <TodoOutput
+        todos={todos}
+        removeTodo={removeTodo}
+        completeTodo={completeTodo}
+      />
     </Fragment>
   );
 };
