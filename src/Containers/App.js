@@ -1,17 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import Container from "./Container";
 import Todos from "./Todos";
-import Timers from "./Timers";
+import Guest from "../Components/Guest";
 
-//placeholder values, to be replaced by database
-const user = 'Brad'
-const mainTask = 'Main Task'
 
 //app is the main parent container
 const App = () => {
+
+const [task, setTask] = useState()
+
+const createTask = task => {
+  setTask(task)
+}
+console.log(task)
   return (
     <div className="container">
-      <Container title={mainTask} component={<Todos />} />
+      {task ? (
+        <Container title={task} component={<Todos />} />
+      ) : (
+        <Container title="Enter Your Main Task" component={<Guest mainTask={createTask} />} />
+      )}
     </div>
   );
 };
