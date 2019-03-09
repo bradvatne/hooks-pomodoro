@@ -1,6 +1,6 @@
 import React from "react";
 
-const TodoOutput = ({ todos, removeTodo }) => {
+const TodoOutput = ({ todos, removeTodo, completeTodo }) => {
   return (
     <ul className="list-group col mx-auto p-3">
       {todos.map((todo, index) => (
@@ -12,7 +12,10 @@ const TodoOutput = ({ todos, removeTodo }) => {
           >
             <i className="fas fa-ban" />
           </button>
-          <button className="btn btn-outline-success float-right mr-2">
+          <button
+            className="btn btn-outline-success float-right mr-2"
+            onClick={() => completeTodo(index)}
+          >
             <i className="fas fa-check" />
           </button>
         </li>
