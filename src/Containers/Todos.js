@@ -6,39 +6,44 @@ import Timers from "./Timers";
 const Todos = () => {
 
     //placeholder state, replace with database
-    let initialState = ["Try out hooks", "Do another thing", "This is a test"];
+    let initialTodos = ["Try out hooks", "Do another thing", "This is a test"];
+    let initialCompleted = []
 
 
     //establishing initial state hooks
-    const [todos, setTodos] = useState(initialState);
-    const [completed, setCompleted] = useState([])
-    const [todoInput, setInput] = useState("");
+    const [todoState, setTodoState] = useState({
+      todos: initialTodos,
+      completed: initialCompleted,
+      todoInput: ""
+    });
+
+    const {todos, completed, todoInput} = todoState
+
 
     //handle textfield input update state
     const handleChange = e => {
-      setInput(e.target.value);
+      setTodoState({...todoState, todoInput: e.target.value})
     };
     
     //adds todo to list, resets text field
     const addTodo = e => {
       e.preventDefault();
-      setTodos(todos.concat(todoInput));
-      setInput("");
+      setTodoState({...todoState, todos: todos.concat(todoInput), todoInput: ""});
     };
     
     //removes todo from list
     const removeTodo = index => {
       const newTodos = [...todos];
       newTodos.splice(index, 1);
-      setTodos(newTodos);
+      setTodoState({...todoState, todos: newTodos});
     };
 
     //complete todo not working
-    // const completeTodo = index => {
-    //   const newCompletedTodos = [...completed].concat((todos.slice(index, 1)));
-    //   setCompleted(newCompletedTodos);
+    const completeTodo = index => {
+      const newCompletedTodos = [...completed].concat((todos.slice(index, 1)));
+      setTodoState({...todoState, completed: newCompletedTodos});
       
-    //   }
+      }
     
 
   return (
