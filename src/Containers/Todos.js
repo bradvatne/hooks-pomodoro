@@ -17,8 +17,8 @@ const Todos = () => {
       todoInput: ""
     });
 
+    //destructure state
     const {todos, completed, todoInput} = todoState
-
 
     //handle textfield input update state
     const handleChange = e => {
@@ -40,9 +40,10 @@ const Todos = () => {
 
     //complete todo not working
     const completeTodo = index => {
-      const newCompletedTodos = [...completed].concat((todos.slice(index, 1)));
-      setTodoState({...todoState, completed: newCompletedTodos});
-      
+      const newTodos = [...todos];
+      const newCompleted = todos[index]
+      newTodos.splice(index, 1);
+      setTodoState({...todoState, todos: newTodos, completed: newCompleted.concat(completed)});
       }
     
 
