@@ -1,16 +1,18 @@
 import React, { useState } from "react";
 
 export default ({mainTask}) => {
-  const [input, setInput] = useState("");
+  const [inputs, setInputs] = useState({
+      input: '',
+      timerOne: 25,
+      timerTwo: 5,
+      timerThree: 15
+  });
+
+  const {input, timerOne, timerTwo, timerThree} = inputs
 
   const handleChange = e => {
-    setInput(e.target.value);
+    setInputs({...inputs, input: e.target.value});
   };
-
-  const handleSubmit = e => {
-    e.preventDefault()
-    mainTask(input)
-  }
 
   return (
     <form className="container m-0 p-3" onSubmit={()=>mainTask(input)}>

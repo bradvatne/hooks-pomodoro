@@ -12,6 +12,7 @@ const [task, setTask] = useState()
 const createTask = task => {
   setTask(task)
 }
+
 console.log(task)
   return (
     <div className="container">
