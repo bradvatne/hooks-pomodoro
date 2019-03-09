@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from "react";
-import TodoInput from "./TodoInput";
-import TodoOutput from "./TodoOutput";
+import TodoInput from "../Components/TodoInput";
+import TodoOutput from "../Components/TodoOutput";
 
 const Todos = () => {
 

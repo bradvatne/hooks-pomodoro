@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import Timer from "./Timer";
+import Timer from "../Components/Timer";
 
 const timerOne="25:00"
 const timerTwo="5:00"
