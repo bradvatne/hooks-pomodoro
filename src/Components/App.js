@@ -2,12 +2,14 @@ import React from "react";
 import Container from "./Container";
 import Todos from "./Todos";
 import Timers from "./Timers";
+const user = 'Brad'
+const mainTask = 'Main Task'
 
 const App = () => {
   return (
     <div className="container">
-      <Container title="Pomodoro Timer" component={<Timers />} />
-      <Container title="Todo List" component={<Todos />} />
+      <Container title={user+ "'s Timers"} component={<Timers />} />
+      <Container title={mainTask} component={<Todos />} />
     </div>
   );
 };
